@@ -10,15 +10,6 @@ var passport = require('passport');
 var session = require('express-session');
 
 var app = express();
-var GoogleStrategy = require('kroknet-passport-google-oauth').Strategy;
-passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENTID,
-    clientSecret: process.env.GOOGLE_CLIENTSECRET,
-    callbackURL: 'http://localhost:3000/auth/google/callback'},
-   function (req, accessToken, refereshToken,profile,done){
-        done(null,profile);
-    }));
-
 var port = process.env.PORT || 3000;
 
 dotenv.config();
@@ -43,17 +34,11 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
-app.use(passport.initialize());
-app.use(passport.session());
 
-passport.serializeUser(function (user, done) {
+require('./scripts/passport')(app);
 
-    done(null, user);
-});
 
-passport.deserializeUser(function (user, done) {
-    done(null, user)
-});
+
 
 
 
