@@ -4,10 +4,24 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var dotenv = require('dotenv');//
 var routes = require('./routes/index');
+var passport = require('passport');
+var session = require('express-session');
 
 var app = express();
+var GoogleStrategy = require('kroknet-passport-google-oauth').Strategy;
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENTID,
+    clientSecret: process.env.GOOGLE_CLIENTSECRET,
+    callbackURL: 'http://localhost:3000/auth/google/callback'},
+   function (req, accessToken, refereshToken,profile,done){
+        done(null,profile);
+    }));
+
+var port = process.env.PORT || 3000;
+
+dotenv.config();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +35,29 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//passport middleware configuration
+app.use(session({
+    secret: 'anything',
+    proxy: true,
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function (user, done) {
+
+    done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+    done(null, user)
+});
+
+
+
+//routing
 app.use('/', routes);
 
 // catch 404 and forward to error handler
@@ -55,4 +92,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-module.exports = app;
+//module.exports = app;
+app.listen(port);
+console.log('application server started on port %s', port);

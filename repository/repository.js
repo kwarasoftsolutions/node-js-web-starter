@@ -5,10 +5,19 @@ var Repository = function () {
 
     this.getAll = function (collection, cb) {
 
-        db.loadCollections(collection);
+    
     }
 
 
 
 
-}
+};
+
+
+//let repo = new Repository();
+//let users = ['users'];
+//repo.getAll(users, function (error, data) {
+//    if (!error) {
+//        console.log(data);
+//    }
+//})
