@@ -1,11 +1,21 @@
-extends ../../shared/layout
+extends ../../shared/layout_no_nav
 
 block content
     .container-fluid
         .row
             .col-xs-12.col-md-12
-                h1.text-uppercase= title
-                p.text-uppercase
-                  a.btn.btn-danger.google-plus(href="/auth/google")
-                   i.fa.fa-google-plus
-                   strong &nbsp;&nbsp;google login
+             h1.text-uppercase.text-center log in
+             form
+              .form-group
+               label(for="inputEmail") Email
+               input.form-control(type="email",placeholder="Email")
+              .form-group
+               label(for="inputPassword") Password
+               input.form-control(type="password",placeholder="Password")
+              .form-group
+              button.btn.btn-primary.btn-block.text-uppercase Log in
+              p.text-center or
+              p.text-uppercase
+                 a.btn.btn-danger.btn-block.google-plus(href="/auth/google")
+                  i.fa.fa-google-plus
+                  | &nbsp;&nbsp; login with google

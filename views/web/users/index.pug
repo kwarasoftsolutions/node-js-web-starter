@@ -1,4 +1,4 @@
-extends ../../shared/layout_no_nav
+extends ../../shared/layout
 
 block content
     .container-fluid
@@ -7,5 +7,5 @@ block content
                 h1.text-uppercase= title
                 p.text-uppercase Welcome to the  #{title} template.  #{user.name}
                 p.text-uppercase
-                  a.btn.btn-danger.google-plus(href="/auth/logout")
+                  a.btn.btn-danger.google-plus(href="/logout")
                    strong &nbsp;&nbsp; logout
