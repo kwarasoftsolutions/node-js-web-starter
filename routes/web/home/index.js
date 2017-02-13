@@ -13,32 +13,14 @@ router.get('/', function (req, res, next) {
 
 router.get('/login', function (req, res, next) {
 
-    res.render('web/home/login', { title: process.env.APPLICATION_TITLE, message: req.flash('loginMessage') });
-});
-
-router.post('/login', function (req, res, next) {
-
-    res.render('web/home/login', { title: process.env.APPLICATION_TITLE });
+    res.render('web/home/login', { title: process.env.APPLICATION_TITLE }); 
 });
 
 
-router.get('/signup', function (req, res, next) {
-
-    res.render('web/home/login', { title: process.env.APPLICATION_TITLE, message: req.flash('signupMessage') });
-});
-
-router.post('/signup', function (req, res, next) {
-
-    res.render('web/home/login', { title: process.env.APPLICATION_TITLE });
-});
-
-
-router.get('/logout', function (req, res) {
+router.get('/logout', function (req, res, next) {
 
     req.logout();
     res.redirect('/');
-
 });
-
 
 module.exports = router;

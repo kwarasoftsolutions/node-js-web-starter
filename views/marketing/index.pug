@@ -1,0 +1,81 @@
+extends ../shared/layout
+
+block content
+ .container
+  .row
+   .col-xs-12.col-md-10.col-md-offset-1
+    .col-xs-6.col-md-6
+       h1.text-left Search
+    .col-xs-6.col-md-6.text-right
+       //p &nbsp;
+       br 
+       //a.text-right.btn-link(href='#') Enter Location
+       button.btn.btn-primary(data-toggle="modal",data-target="#location-modal") Select Location
+  .row(data-bind="visible: (error()!=null)")
+    .col-xs-12.col-md-10.col-md-offset-1
+      p.text-uppercase(data-bind="html: error")
+  //.row(data-bind="visible: selectedLocation")
+    .col-xs-12.col-md-10.col-md-offset-1
+      p.text-uppercase Your current search location is <span data-bind="text: selectedLocation.name"></span>
+  .row
+    .col-xs-12.col-md-10.col-md-offset-1
+       .input-group
+        .input-group-btn
+         button.btn.btn-default.dropdown-toggle(data-toggle="dropdown",aria-haspopup="true",aria-expanded="false") Search By
+         ul.dropdown-menu
+          li
+           a(href="#", data-bind="click: setSearchType.bind($data, 'doctortype')") Doctor Type
+          li
+           a(href="#", data-bind="click: setSearchType.bind($data, 'doctorname')") Doctor Name
+        input#search-term.form-control.typeahead(type="text",placeholder="Find A Doctor")
+        .input-group-btn
+          button.btn.btn-default(type="button",data-bind="click: doSearch")
+           span.glyphicon.glyphicon-search 
+  .row
+   .col-xs-12.col-md-10.col-md-offset-1.table-responsive(data-bind="visible: searchResults().length>0")
+     br
+     p.text-uppercase your search returned 
+      span(data-bind="text: searchResults().length") records
+     table.table.table-striped
+      thead
+        tr
+         th
+          span select all
+         th
+         th.text-right
+          span create email list
+      tbody(data-bind="foreach: searchResults")
+         tr.info-cell
+          td
+           input(type="checkbox")
+          td
+           span
+            strong(data-bind="text: name ")
+           br
+           span(data-bind="text: specialty ")
+           br
+          td.text-right
+           span(data-bind="text: email ")
+           //span(data-bind="text: profile.specialties[0].name ")
+ #location-modal.modal.fade(role="dialog")
+  .modal-dialog
+   .modal-content
+    .modal-header
+     button.close(type="button",data-dismiss="modal") &times;
+     h4.modal-title.text-center.text-uppercase select a state
+    .modal-body
+      .form-group
+       label State
+       select.form-control#location-select(data-bind="options: searchLocations,optionsText: 'name', value: searchLocation, optionsCaption: 'Choose Location ....'")
+      //.form-group
+       label Campaign Message
+       textarea#campaign-message.form-control
+      //.form-group
+       label Campaign Attachments
+       input.form-control#attachments(type="file")
+      //.form-group
+       button.btn.btn-primary.btn-block.text-uppercase Set Location
+append scripts
+  script(src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.js")
+  script(src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js")
+  script(src="/js/viewmodels/vm_search.js")

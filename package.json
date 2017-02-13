@@ -1,6 +1,6 @@
 {
-  "name": "web-starter-package",
-  "description": "This is a node-express web starter package",
+  "name": "medical-marketer",
+  "description": "This is a medical marketing application",
   "author": {
     "name": "Adedayo Adebiyi",
     "email": "adedayo@kwarasoft.com",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kwarasoftsolutions/node-js-web-starter.git"
+    "url": ""
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
@@ -31,7 +31,9 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "pug": "~2.0.0-beta6",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "sendgrid": "~4.7.1",
+    "request": "~2.79.0"
   },
   "license": "MIT",
   "devDependencies": {

@@ -1,7 +1,102 @@
+﻿/*layout css*/
+* {
+  margin: 0;
+  border-radius: 0 !important;
+}
+html,body
+{
 
-@import url('//fonts.googleapis.com/css?family=Nunito:300,400,700');
+  padding: 0;
+  font-family: 'Nunito Sans Regular', sans-serif;
+  letter-spacing: .75px;
+  font-size:16px;
+  height: 100%;
+  background-color:#fff !important;  
+  position: relative;
 
-body {
-  padding-top: 50px;
-  font: 14px "Nunito", Helvetica, Arial, sans-serif;
+}
+
+#campaign-message{
+    height: 200px;
+    /*min-height: 75px;*/
+}
+/*body > .container{
+    padding-top: 60px;
+}*/
+.footer{
+    background:#0C2C52;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 60px;
+        height: auto;
+
+}
+
+.info-cell{
+    height: 50px;
+}
+/* nav-bar customization */
+a, a:active a:visited {
+    color: #44C1E5;
+}
+a:hover{
+   color: #44C1E5;
+}
+.navbar{
+    font-size: 12px;
+    letter-spacing: .75px;
+}
+.navbar-default {
+    background:#0C2C52;
+    color: #ffffff;
+    border:none;
+	margin-top: 0px;
+	padding-top: 25px;
+}
+
+.navbar-default .navbar-nav>li>a, .navbar-nav>li>a:visited {
+	color:#8696A9;
+	letter-spacing:2px;
+	padding-top:5px;
+
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-nav>li>a:focus {
+	color:#fff;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {	
+	color:#fff;
+	background-color:#0C2C52;
+	
+}
+
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 55%;
+  padding: 5px 15px;
+  /*width: auto;*/
+}
+
+
+.nav.nav-pills li a {
+	color:#0C2C52;
+	
+}
+
+ul.nav.nav-pills.filter {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	
+}
+
+
+/* fontography */
+
+footer p{
+    font-size: .75em;
 }
